@@ -11,8 +11,8 @@ module.exports = {
       `insert into user (first_name, last_name, email, password, role, activate, country, created_at, remember_token, id_language) 
       values (?,?,?,?,?,?,?,?,?,?)`,
       [
-        data.name,
         data.first_name,
+        data.last_name,
         data.email,
         data.password,
         '',
@@ -33,7 +33,7 @@ module.exports = {
 
   getById: (id, callBack) => {
     pool.query(
-      `select id_user, name, first_name, email, password, activate, created_at, remember_token, id_language from users where id_user = ?`,
+      `select id_user, first_name, last_name, email, password, activate, created_at, remember_token, id_language from users where id_user = ?`,
       [id],
       (error, results, fields) => {
         if (error) {
@@ -59,7 +59,7 @@ module.exports = {
 
   getUserByEmail: (email, callBack) => {
     pool.query(
-      `select id_user, name, first_name, email, password, activate, created_at, remember_token, id_language from users where email=?`,
+      `select id_user, first_name, last_name, email, password, activate, created_at, remember_token, id_language from users where email=?`,
       [email],
       (error, results, fields) => {
         if (error) {
