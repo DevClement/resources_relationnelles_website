@@ -8,7 +8,7 @@ module.exports = {
   create: (data, callBack) => {
 
     pool.query(
-      `insert into user (first_name, last_name, email, password, role, activate, country, created_at, remember_token, id_language) 
+      `insert into users (first_name, last_name, email, password, role, activate, country, created_at, remember_token, id_language) 
       values (?,?,?,?,?,?,?,?,?,?)`,
       [
         data.first_name,
