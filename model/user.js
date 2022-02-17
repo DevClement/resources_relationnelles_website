@@ -46,7 +46,7 @@ module.exports = {
 
   deleteById: (id, callBack) => {
     pool.query(
-      `delete from user where id_user = ?`,
+      `delete from users where id_user = ?`,
       [id],
       (error, results, fields) => {
         if (error) {
