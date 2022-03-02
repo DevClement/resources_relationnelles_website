@@ -94,4 +94,11 @@ module.exports = {
             );
         });
     },
+    signIN: (req, res) => {
+        console.log('cc')
+        return res.render('login');
+    },
+    signUP: (req, res) => {
+        return res.render('register');
+    }
 };

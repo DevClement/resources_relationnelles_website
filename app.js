@@ -6,7 +6,9 @@ var logger = require('morgan');
 const cors = require('cors')
 
 var indexRouter = require('./routes/index');
+var usersRouterAPI = require('./routes/usersAPI');
 var usersRouter = require('./routes/users');
+
 var resource_type_relationsRouter = require('./routes/resource_type_relations');
 var resource_typeRouter = require('./routes/resource_type');
 var resource_categoriesRouter = require('./routes/resource_categories');
@@ -34,8 +36,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
+app.use('/api/users', usersRouterAPI);
 app.use('/resource_type_relations', resource_type_relationsRouter);
 app.use('/resource_type', resource_typeRouter);
 app.use('/resource_categories', resource_categoriesRouter);
@@ -45,7 +48,7 @@ app.use('/markers', markersRouter);
 app.use('/langage', langageRouter);
 app.use('/resources_lang', resources_langRouter);
 app.use('/resource_plus_type_relation', resource_plus_type_relation);
-
+app.use('/', indexRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

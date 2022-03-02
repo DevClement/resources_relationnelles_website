@@ -2,17 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 const {
-  create,
-  getById,
-  deleteById,
-  login,
+  signIN,
+  signUP,
 } = require("../controllers/users");
 
-//ADAPTACION MYSQL
-router.post("/",  create);
-router.get("/:id", getById);
-router.delete("/:id", deleteById);
-router.post("/login", login)
-//ADAPTACION MYSQL
+router.get("/login", signIN);
+router.get("/register", signUP);
+
 
 module.exports = router;

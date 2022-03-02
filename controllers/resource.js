@@ -269,4 +269,9 @@ module.exports = {
             });
         });
     },
+
+    listResource: (req, res) => {
+        res.render('resources');
+    },
+
 };

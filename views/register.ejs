@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-md w-full space-y-8">
+                <div>
+                    <img class="mx-auto h-24 w-auto rounded-full" src="/images/logo_rl_plein.jpg" alt="Workflow">
+                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Créer un compte</h2>
+                </div>
+                <div class="text-center font-bold">
+                    <a class="text-blue-600" href="/users/login">Déjà un compte existant</a>
+                </div>
+                <form action="/api/users" method="POST" id="login-form">
+                    <input type="hidden" name="redirect_to" value="">
+                    <input type="hidden" name="attempts" value="">
+                    <input type="hidden" name="cust_id" id="cust_id" value="">
+                    <input type="hidden" name="token" id="token" value="">
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium leading-8 text-gray-700">
+                            Email :
+                        </label>
+                        <div class="mt-1 rounded-md">
+                            <input id="email" value="" type="email" placeholder="Email" autofocus="" name="email" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="nom" class="block text-sm font-medium leading-8 text-gray-700">
+                            Nom :
+                        </label>
+                        <div class="mt-1 rounded-md">
+                            <input id="nom" value="" type="nom" placeholder="Nom" name="first_name" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="prenom" class="block text-sm font-medium leading-8 text-gray-700">
+                            Prénom :
+                        </label>
+                        <div class="mt-1 rounded-md">
+                            <input id="prenom" value="" type="prenom" placeholder="Prénom" name="first_name" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        <label for="password" class="block text-sm font-medium leading-8 text-gray-700">
+                            Mot de passe :
+                        </label>
+                        <div class="mt-1 rounded-md">
+                            <input type="password" placeholder="Mot de passe" name="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        <label for="cp" class="block text-sm font-medium leading-8 text-gray-700">
+                            Code Postal :
+                        </label>
+                        <div class="mt-1 rounded-md">
+                            <input type="cp" pattern="[0-9]{5}" maxlength="5" placeholder="Code postal" name="cp" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        <label for="pays" class="block text-sm font-medium leading-8 text-gray-700">
+                            Pays :
+                        </label>
+                        <div class="mt-1 rounded-md">
+                            <input type="pays" placeholder="Pays" name="country" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <span class="block w-full rounded-md">
+                            <button type="submit" class="block w-full py-2 px-3 border border-transparent rounded-md text-white font-medium bg-teal-600 shadow-sm sm:text-sm mb-10 hover:bg-teal-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50">
+                                Valider
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
