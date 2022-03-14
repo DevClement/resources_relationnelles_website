@@ -10,8 +10,8 @@ const {
 } = require("../controllers/resource_categories");
 
 //ADAPTACION MYSQL
+router.get("/crea_resource", getAll);
 router.post("/", create);
-router.get("/", getAll);
 router.get("/:id", getById);
 router.delete("/:id", deleteById);
 router.put("/", updateById)

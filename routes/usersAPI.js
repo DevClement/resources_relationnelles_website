@@ -12,7 +12,7 @@ const {
 router.post("/",  create);
 router.get("/:id", getById);
 router.delete("/:id", deleteById);
-router.post("/login", login)
+router.post("/login", login);
 //ADAPTACION MYSQL
 
 module.exports = router;

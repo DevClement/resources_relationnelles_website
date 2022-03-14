@@ -2,21 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 const {
-    listResource,
-    create,
-    getAll,
-    getById,
-    deleteById,
-    updateById,
+    creaResource,
+    editResource,
+    resource
 } = require("../controllers/resource");
 
 //ADAPTACION MYSQL
-router.get("/resources", listResource);
-router.post("/", create);
-router.get("/", getAll);
-router.get("/:id", getById);
-router.delete("/:id", deleteById);
-router.put("/", updateById);
+router.get("/resources", resource);
+router.get("/crea_resource", creaResource); 
+router.get("/edit_resource", editResource);
 //ADAPTACION MYSQL
 
 module.exports = router;

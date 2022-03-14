@@ -26,20 +26,55 @@ module.exports = {
         });
     },
 
-    getAll: (req, res) => {
-        getAll((err, results) => {
+    editResource: (req, res) => {
+        getAll((err, resource) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json(
                     err
                 );
             }
-            return res.status(200).json(
-                results
-            );
+            return res.render('edit_resource', {resource});
         });
     },
 
+    listResource: (req, res) => {
+        getAll((err, resource) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+            return res.render('list_resource', {resource});
+        });
+    },
+
+    listResourceConnected: (req, res) => {
+        getAll((err, resource) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+            return res.render('list_resource_connected', {resource});
+        });
+    },
+
+    listResourceAdmin: (req, res) => {
+        getAll((err, resource) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+            return res.render('list_resource_admin', {resource});
+        });
+    },
+
+    
     getById: (req, res) => {
         const id = req.params.id;
         getById(id, (err, results) => {
@@ -82,5 +117,13 @@ module.exports = {
                 message: "Actualización satisfactoria"
             });
         });
+    },
+
+    resource: (req, res) => {
+        res.render('resources');
+    },
+
+    creaResource: (req, res) => {
+        res.render('crea_resource');
     },
 };

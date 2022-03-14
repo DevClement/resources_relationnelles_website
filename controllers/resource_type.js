@@ -26,17 +26,15 @@ module.exports = {
         });
     },
 
-    getAll: (req, res) => {
-        getAll((err, results) => {
+    listType: (req, res) => {
+        getAll((err, type) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json(
                     err
                 );
             }
-            return res.status(200).json(
-                results
-            );
+            return res.render('crea_resource', {type});
         });
     },
 

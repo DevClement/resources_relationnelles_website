@@ -70,6 +70,18 @@ module.exports = {
     );
   },
 
+  getAll: (callBack) => {
+    pool.query(
+      `select id_user, first_name, last_name, email, password, activate, created_at, remember_token, id_language from users`,
+      (error, results, fields) => {
+        if (error) {
+          callBack(error);
+        }
+        return callBack(null, results);
+      }
+    );
+  },
+
 };
 // const mongoose = require('mongoose');
 // const Schema = mongoose.Schema;

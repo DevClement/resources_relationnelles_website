@@ -13,6 +13,10 @@ const {
 } = require("../model/resources_lang");
 
 const {
+    getAllLanguage
+} = require("../model/langage");
+
+const {
     create_resource_plus_type_relation,
     getById_Resource_plus_type_relation,
     getAll_resource_plus_type_relation
@@ -270,7 +274,25 @@ module.exports = {
         });
     },
 
-    listResource: (req, res) => {
+    creaResource: async (req, res) => {
+        console.log("ICI");
+        const languages = await new Promise( async (error, results) => {
+            await getAllLanguage((error, result) => {
+                return results(result);
+            });
+        }).then(value => {
+            return value
+        });
+        console.log('cc');
+
+        res.render('crea_resource');
+    },
+
+    editResource: (req, res) => {
+        res.render('edit_resource');
+    },
+
+    resource: (req, res) => {
         res.render('resources');
     },
 

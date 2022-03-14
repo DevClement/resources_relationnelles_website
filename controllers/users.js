@@ -3,12 +3,14 @@ const {
     getById,
     deleteById,
     getUserByEmail,
+    getAll
 } = require("../model/user");
 
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 
 const bcrypt = require('bcrypt');
+const { create_resource_plus_type_relation } = require("../model/resource_plus_type_relation");
 
 module.exports = {
     create: (req, res) => {
@@ -55,10 +57,7 @@ module.exports = {
             }
 
             if (!results) {
-                return res.json({
-                    success: false,
-                    message: "Email ou mot de passe incorrects."
-                })
+                return res.render('login');
             }
 
             const match = compareSync(body.password, results.password);
@@ -95,10 +94,50 @@ module.exports = {
         });
     },
     signIN: (req, res) => {
-        console.log('cc')
         return res.render('login');
     },
-    signUP: (req, res) => {
+    signINPost: (req, res) => {
+        return res.render('login');
+    },
+    register: (req, res) => {
         return res.render('register');
-    }
+    },
+    registerPost: (req, res) => {
+        return res.render('register');
+    },
+    superAdminRegister: (req, res) => {
+        return res.render('register_super_admin');
+    },
+    listCitoyen: (req, res) => {
+        getAll((err, users) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+
+            if (!users) {
+                return res.render('login');
+            }
+
+            return res.render('list_citoyen', {users});
+        });
+    },
+
+    editCitoyen: (req, res) => {
+        getAll((err, users) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+
+            if (!users) {
+                return res.render('login');
+            }
+            return res.render('edit_citoyen');
+       });
+    },
 };

@@ -21,7 +21,7 @@ module.exports = {
         );
     },
 
-    getAll: callBack => {
+    getAllLanguage: callBack => {
         console.log('getAll');
         pool.query(
             `SELECT id_language, name FROM langage`,
