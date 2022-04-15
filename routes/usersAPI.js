@@ -10,6 +10,8 @@ const {
 
 //ADAPTACION MYSQL
 router.post("/",  create);
+router.get("/list_resource_admin", login)
+router.get("/error_login", login)
 router.get("/:id", getById);
 router.delete("/:id", deleteById);
 router.post("/login", login);

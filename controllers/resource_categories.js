@@ -34,6 +34,7 @@ module.exports = {
                     err
                 );
             }
+            
             res.render('crea_resource', {categorie});
         });
     },

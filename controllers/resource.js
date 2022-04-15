@@ -7,6 +7,14 @@ const {
 } = require("../model/resource");
 
 const {
+    getAllType
+} = require("../model/resource_type");
+
+const {
+    getAllCategorie
+} = require("../model/resource_categories");
+
+const {
     create_resources_lang,
     getById_Resource_lang,
     getAll_resources_lang
@@ -295,5 +303,26 @@ module.exports = {
     resource: (req, res) => {
         res.render('resources');
     },
-
+    listType: (req, res) => {
+        getAllType((err, type) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+            return res.render('crea_resource', {type});
+        });
+    },
+    listCategorie: (req, res) => {
+        getAllCategorie((err, getAllCategories) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+            return res.render('crea_resource', {getAllCategories});
+        });
+    },
 };

@@ -1,0 +1,7 @@
+<label for=type class="block font-medium leading-8 text-gray-700">Type :</label>
+<select id="type" name="type" autocomplete="Veuillez choisir un type">
+    <option>--Sélectionner un type</option>
+    <% type.forEach(function(types) { %>
+    <option><%= types.name %></option>
+    <% }); %>
+</select>

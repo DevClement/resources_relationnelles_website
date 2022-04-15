@@ -11,7 +11,7 @@ const {
   superAdminRegister
 } = require("../controllers/users");
 
-router.get("/login", signIN);
+router.get("/login", signIN); 
 router.post("/login", signINPost);
 router.get("/register", register);
 router.post("/register", registerPost);

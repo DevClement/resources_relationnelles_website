@@ -3,6 +3,7 @@ var router = express.Router();
 
 const {
     create,
+    getAll,
     getById,
     deleteById,
     updateById,
@@ -10,6 +11,7 @@ const {
 
 //ADAPTACION MYSQL
 router.post("/", create);
+router.get("/crea_resource", getAll);
 router.get("/:id", getById);
 router.delete("/:id", deleteById);
 router.put("/", updateById)

@@ -1,6 +1,6 @@
 const {
     create,
-    getAll,
+    getAllType,
     getById,
     deleteById,
     updateById
@@ -26,8 +26,8 @@ module.exports = {
         });
     },
 
-    listType: (req, res) => {
-        getAll((err, type) => {
+    getAll: (req, res) => {
+        getAllType((err, type) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json(
@@ -81,4 +81,5 @@ module.exports = {
             });
         });
     },
+    
 };

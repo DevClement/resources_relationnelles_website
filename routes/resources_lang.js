@@ -16,6 +16,7 @@ const {
 
 
 //ADAPTACION MYSQL
+router.post("/crea_resource", create);
 router.get("/crea_resource", creaResource); 
 router.get("/resources", resource);
 router.get("/edit_resource", editResource);

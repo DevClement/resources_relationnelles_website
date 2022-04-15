@@ -25,9 +25,7 @@ module.exports = {
                     err
                 );
             }
-            return res.status(200).json(
-                results
-            );
+            return res.render('login');
         });
     },
 
@@ -57,7 +55,10 @@ module.exports = {
             }
 
             if (!results) {
-                return res.render('login');
+                return res.json({
+                    success: false,
+                    message: "Email ou mot de passe incorrects."
+                })
             }
 
             const match = compareSync(body.password, results.password);
@@ -97,7 +98,30 @@ module.exports = {
         return res.render('login');
     },
     signINPost: (req, res) => {
-        return res.render('login');
+        const body = req.body;
+        getUserByEmail(body.email, (err, results) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+
+            if (!results) {
+                return res.render('error_login');
+            }
+
+            const match = compareSync(body.password, results.password);
+
+            if (match) {
+                // le mot de passe est correct, on fait le login
+                return res.render('index');
+                
+            } else {
+                // le mot de passe envoyé depuis le front n'est pas correct, on envoie une erreur
+                return res.render('error_login');
+            }
+        });                
     },
     register: (req, res) => {
         return res.render('register');
@@ -107,6 +131,21 @@ module.exports = {
     },
     superAdminRegister: (req, res) => {
         return res.render('register_super_admin');
+    },
+    editCitoyen: (req, res) => {
+        getAll((err, users) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(
+                    err
+                );
+            }
+
+            if (!users) {
+                return res.render('login');
+            }
+            return res.render('edit_citoyen');
+       });
     },
     listCitoyen: (req, res) => {
         getAll((err, users) => {
@@ -125,19 +164,4 @@ module.exports = {
         });
     },
 
-    editCitoyen: (req, res) => {
-        getAll((err, users) => {
-            if (err) {
-                console.log(err);
-                return res.status(500).json(
-                    err
-                );
-            }
-
-            if (!users) {
-                return res.render('login');
-            }
-            return res.render('edit_citoyen');
-       });
-    },
 };
