@@ -15,6 +15,10 @@ const {
 } = require("../model/resource_categories");
 
 const {
+    getAllTypesRelation
+} = require("../model/resource_type_relations");
+
+const {
     create_resources_lang,
     getById_Resource_lang,
     getAll_resources_lang
@@ -27,7 +31,7 @@ const {
 const {
     create_resource_plus_type_relation,
     getById_Resource_plus_type_relation,
-    getAll_resource_plus_type_relation
+    getAll_resource_plus_type_relation,
 } = require("../model/resource_plus_type_relation");
 
 const { sign } = require("jsonwebtoken");
@@ -282,20 +286,6 @@ module.exports = {
         });
     },
 
-    creaResource: async (req, res) => {
-        console.log("ICI");
-        const languages = await new Promise( async (error, results) => {
-            await getAllLanguage((error, result) => {
-                return results(result);
-            });
-        }).then(value => {
-            return value
-        });
-        console.log('cc');
-
-        res.render('crea_resource');
-    },
-
     editResource: (req, res) => {
         res.render('edit_resource');
     },
@@ -303,26 +293,61 @@ module.exports = {
     resource: (req, res) => {
         res.render('resources');
     },
-    listType: (req, res) => {
-        getAllType((err, type) => {
-            if (err) {
-                console.log(err);
-                return res.status(500).json(
-                    err
-                );
-            }
-            return res.render('crea_resource', {type});
+    
+    creaResource: async (req, res) => {
+        const types = await new Promise(resolve => {
+            return getAllType((err, getAllTypes) => {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).json(
+                        err
+                    );
+                }
+                resolve(getAllTypes)
+            });
+        }).then(result => {
+            return result
         });
-    },
-    listCategorie: (req, res) => {
-        getAllCategorie((err, getAllCategories) => {
+
+        console.log(types)
+
+        const categories = await new Promise(resolve => {
+            return getAllCategorie((err, getAllCategories) => {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).json(
+                        err
+                    );
+                }
+                resolve(getAllCategories)
+            });
+        }).then(result => {
+            return result
+        });
+
+        const typesRelation = await new Promise(resolve => {
+            return getAllTypesRelation((err, getAllTypesRelation) => {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).json(
+                        err
+                    );
+                }
+                resolve(getAllTypesRelation)
+            });
+        }).then(result => {
+            return result
+        });
+        
+        
+        getAllLanguage((err, getAllLanguages) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json(
                     err
                 );
             }
-            return res.render('crea_resource', {getAllCategories});
+            return res.render('crea_resource', {categories, types, typesRelation, getAllLanguages});
         });
     },
 };

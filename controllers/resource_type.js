@@ -27,14 +27,14 @@ module.exports = {
     },
 
     getAll: (req, res) => {
-        getAllType((err, type) => {
+        getAllType((err, getAllTypes) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json(
                     err
                 );
             }
-            return res.render('crea_resource', {type});
+            return res.render('crea_resource', {getAllTypes});
         });
     },
 

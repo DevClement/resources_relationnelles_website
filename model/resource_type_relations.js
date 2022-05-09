@@ -21,7 +21,7 @@ module.exports = {
         );
     },
 
-    getAll: callBack => {
+    getAllTypesRelation: callBack => {
         console.log('getAll');
         pool.query(
             `SELECT id_relationships_types, name FROM resource_type_relations`,

@@ -10,11 +10,11 @@ module.exports = {
         pool.query(
             `INSERT INTO resource(status, created_at, id_resource_types, id_categorie, id_language) VALUES (?,?,?,?,?)`,
             [                
-                data.status,
-                data.created_at,
-                data.id_resource_types,
-                data.id_categorie,
-                data.id_language
+                'Published',
+                'NOW()',
+                data.type,
+                data.categorie,
+                data.language
             ],
             (error, results, fields) => {
                 if (error) {

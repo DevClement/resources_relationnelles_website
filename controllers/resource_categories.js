@@ -27,7 +27,7 @@ module.exports = {
     },
 
     getAll: (req, res) => {
-        getAll((err, categorie) => {
+        getAll((err, categories) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json(
@@ -35,7 +35,7 @@ module.exports = {
                 );
             }
             
-            res.render('crea_resource', {categorie});
+            res.render('crea_resource', {categories});
         });
     },
 

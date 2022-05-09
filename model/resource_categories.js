@@ -24,7 +24,7 @@ module.exports = {
     getAllCategorie: callBack => {
         console.log('getAll');
         pool.query(
-            `SELECT id_Categorie, name FROM resource_categories`,
+            `SELECT id_categorie, name FROM resource_categories`,
             [],
             (error, results, fields) => {
                 if (error) {
